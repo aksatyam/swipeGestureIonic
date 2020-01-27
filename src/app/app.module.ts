@@ -1,7 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import * as Hammer from 'hammerjs';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -10,6 +11,12 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+export class MyHammerConfig extends HammerGestureConfig {
+  overrides = <any>{
+    swipe: { direction: Hammer.DIRECTION_ALL },
+  };
+}
 
 @NgModule({
   declarations: [
@@ -34,7 +41,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig }
   ]
 })
-export class AppModule {}
+export class AppModule { }

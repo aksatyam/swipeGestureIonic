@@ -1,5 +1,10 @@
 <ion-tabs>
   <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
+  <!-- <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab> -->
   <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
 </ion-tabs>
+<ion-fab bottom center class="gesture__zone" (swipe)="onSwipe($event)">
+  <button ion-fab>
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>
